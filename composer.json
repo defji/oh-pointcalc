@@ -1,0 +1,22 @@
+{
+  "name": "dfj/pointcalc",
+  "description": "Point calculator for oh",
+  "require-dev": {
+    "phpunit/phpunit": "^9.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "PointCalc\\": "src/"
+    },
+    "files": [
+      "data/exampledata.php"
+    ]
+  },
+  "authors": [
+    {
+      "name": "Balázs Györkös",
+      "email": "balazs.gyorkos@gmail.com"
+    }
+  ],
+  "require": {}
+}
