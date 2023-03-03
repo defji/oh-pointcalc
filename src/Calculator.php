@@ -31,6 +31,16 @@ class Calculator
 
 
     /**
+     * Calculate totalpoints
+     * @return int
+     */
+    public function points(): int
+    {
+        return $this->basePoints() + $this->additionalPoints();
+    }
+
+
+    /**
      * Calculate base points
      * @return int
      * @throws LowLevelGraduateException

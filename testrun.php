@@ -1,114 +1,31 @@
 <?php
 
 use PointCalc\Calculator;
+use PointCalc\Exceptions\LowLevelGraduateException;
+use PointCalc\Exceptions\RequiredSubNotFoundException;
 
 include "vendor/autoload.php";
+include "data/exampledata.php";
 
-global $exampleData;
 
-//$exampleData = [
-//    'valasztott-szak'      => [
-//        'egyetem' => 'ELTE',
-//        'kar'     => 'IK',
-//        'szak'    => 'Programtervező informatikus',
-//    ],
-//    'erettsegi-eredmenyek' => [
-//        [
-//            'nev'      => 'magyar nyelv és irodalom',
-//            'tipus'    => 'közép',
-//            'eredmeny' => '70%',
-//        ],
-//        [
-//            'nev'      => 'történelem',
-//            'tipus'    => 'közép',
-//            'eredmeny' => '80%',
-//        ],
-//        [
-//            'nev'      => 'matematika',
-//            'tipus'    => 'emelt',
-//            'eredmeny' => '90%',
-//        ],
-//        [
-//            'nev'      => 'angol nyelv',
-//            'tipus'    => 'közép',
-//            'eredmeny' => '94%',
-//        ],
-//        [
-//            'nev'      => 'informatika',
-//            'tipus'    => 'közép',
-//            'eredmeny' => '95%',
-//        ],
-//    ],
-//    'tobbletpontok'        => [
-//        [
-//            'kategoria' => 'Nyelvvizsga',
-//            'tipus'     => 'B2',
-//            'nyelv'     => 'angol',
-//        ],
-//        [
-//            'kategoria' => 'Nyelvvizsga',
-//            'tipus'     => 'C1',
-//            'nyelv'     => 'német',
-//        ],
-//    ],
-//];
+try {
+    var_dump((new Calculator($exampleData))->points());
+} catch (LowLevelGraduateException|RequiredSubNotFoundException $e) {
+    var_dump($e->getMessage());
+}
+try {
+    var_dump((new Calculator($exampleData1))->points());
+} catch (LowLevelGraduateException|RequiredSubNotFoundException $e) {
+    var_dump($e->getMessage());
+}
+try {
+    var_dump((new Calculator($exampleData2))->points());
+} catch (LowLevelGraduateException|RequiredSubNotFoundException $e) {
+    var_dump($e->getMessage());
+}
+try {
+    var_dump((new Calculator($exampleData3))->points());
+} catch (LowLevelGraduateException|RequiredSubNotFoundException $e) {
+    var_dump($e->getMessage());
+}
 
-/*
-$exampleData = [
-'valasztott-szak'      => [
-    'egyetem' => 'ELTE',
-    'kar'     => 'IK',
-    'szak'    => 'Programtervező informatikus',
-],
-    'erettsegi-eredmenyek' => [
-    [
-        'nev'      => 'magyar nyelv és irodalom',
-        'tipus'    => 'közép',
-        'eredmeny' => '70%',
-    ],
-    [
-        'nev'      => 'történelem',
-        'tipus'    => 'közép',
-        'eredmeny' => '80%',
-    ],
-    [
-        'nev'      => 'matematika',
-        'tipus'    => 'emelt',
-        'eredmeny' => '90%',
-    ],
-    [
-        'nev'      => 'angol nyelv',
-        'tipus'    => 'közép',
-        'eredmeny' => '94%',
-    ],
-    [
-        'nev'      => 'informatika',
-        'tipus'    => 'közép',
-        'eredmeny' => '95%',
-    ],
-    [
-        'nev'      => 'fizika',
-        'tipus'    => 'közép',
-        'eredmeny' => '98%',
-    ],
-],
-    'tobbletpontok'        => [
-    [
-        'kategoria' => 'Nyelvvizsga',
-        'tipus'     => 'B2',
-        'nyelv'     => 'angol',
-    ],
-    [
-        'kategoria' => 'Nyelvvizsga',
-        'tipus'     => 'C1',
-        'nyelv'     => 'német',
-    ],
-],
-];
-*/
-
-var_dump($exampleData);
-die;
-
-$calc = new Calculator($exampleData);
-print $calc->additionalPoints();
